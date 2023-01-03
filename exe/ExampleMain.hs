@@ -41,6 +41,9 @@ import Duckling.Data.TimeZone
 import Duckling.Dimensions (allDimensions)
 import Duckling.Resolve (DucklingTime)
 
+-- for debugging
+import Debug.Trace
+
 createIfMissing :: FilePath -> IO ()
 createIfMissing f = do
   exists <- doesFileExist f
@@ -111,6 +114,8 @@ parseHandler tzs = do
       let timezone = parseTimeZone tz
       now <- liftIO $ currentReftime tzs timezone
 
+      let nouse = trace ("hi") ()
+      
       let
         lang = parseLang l
 
