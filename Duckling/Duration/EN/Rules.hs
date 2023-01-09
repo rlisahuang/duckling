@@ -161,6 +161,7 @@ ruleDurationHalfATimeGrain = Rule
       _ -> Nothing
   }
 
+-- [lisa] the rule that matches "one week"
 ruleDurationOneGrainAndHalf :: Rule
 ruleDurationOneGrainAndHalf = Rule
   { name = "a <unit-of-duration> and a half"

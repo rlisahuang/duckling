@@ -4,7 +4,7 @@ import System.IO
 import Data.ByteString.Lazy (ByteString)
 
 url = "http://0.0.0.0:8000/parse"
-body = "text=tomorrow at eight"
+body = "text=this week"
 
 makePostRequest :: String -> String -> IO String
 makePostRequest url body = do

@@ -113,9 +113,6 @@ parseHandler tzs = do
     Just tx -> do
       let timezone = parseTimeZone tz
       now <- liftIO $ currentReftime tzs timezone
-
-      let nouse = trace ("hi") ()
-      
       let
         lang = parseLang l
 

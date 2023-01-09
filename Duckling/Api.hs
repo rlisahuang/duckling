@@ -32,6 +32,7 @@ import Duckling.Ranking.Rank
 import Duckling.Resolve
 import Duckling.Rules
 import Duckling.Types
+import Debug.Trace
 
 -- | Parses `input` and returns a curated list of entities found.
 parse
@@ -60,10 +61,12 @@ analyze
 analyze input context@Context{..} options targets =
   rank (classifiers locale) targets
   $ filter isRelevantDimension
+  -- $ trace ("parseAndResolveResult: " ++ show parseAndResolveResult) parseAndResolveResult
   $ parseAndResolve (rulesFor locale targets) input context options
   where
     isRelevantDimension Resolved{node = Node{token = (Token d _)}} =
       HashSet.null targets || HashSet.member (Seal d) targets
+    -- parseAndResolveResult = parseAndResolve (rulesFor locale targets) input context options
 
 -- | Converts the resolved token to the API format
 formatToken :: Text -> ResolvedToken -> Entity

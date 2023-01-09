@@ -153,6 +153,7 @@ ruleASAP = Rule
   , prod = \_ -> tt $ withDirection TTime.After now
   }
 
+-- [lisa] found the rule that matches `this` from the input and recognizes the input as a time as opposed to a duration
 ruleNextDOW :: Rule
 ruleNextDOW = Rule
   { name = "this|next <day-of-week>"

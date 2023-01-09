@@ -36,6 +36,7 @@ import Duckling.Types.Stash (Stash)
 import qualified Duckling.Engine.Regex as Regex
 import qualified Duckling.Types.Document as Document
 import qualified Duckling.Types.Stash as Stash
+import Debug.Trace
 
 -- -----------------------------------------------------------------
 -- Engine
@@ -76,7 +77,7 @@ parseString lang rules sentence = do
     then return Stash.empty
     else
     -- For subsequent passes, we only try rules starting with a predicate.
-    saturateParseString lang headPredicateRules sentence new new partialMatches
+    trace ("partialMatches: " ++ show partialMatches) $ saturateParseString lang headPredicateRules sentence new new partialMatches
   where
   headPredicateRules =
     [ rule | rule@Rule{pattern = (Predicate _ : _)} <- rules ]
